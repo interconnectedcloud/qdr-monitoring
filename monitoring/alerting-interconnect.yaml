@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alerting-rules
+  labels:
+    app: interconnect
+data:
+  alerting-rules.yml: |
+    groups:
+    - name: interconnect
+      rules:
+      - alert: DelayedDeliveries
+        expr: rate(deliveries_delayed_1sec[1m]) > 0
+        for: 10s
+        labels:
+          severity: warning
+        annotations:
+          summary: 'There are delayed deliveries'
+          description: 'There are {{ $value }} delayed deliveries.'
