@@ -1,0 +1,13 @@
+# This will instruct qdr-operator to create a 3 router mesh
+# $ kubectl create -f mesh-3.yaml
+apiVersion: interconnectedcloud.github.io/v1alpha1
+kind: Interconnect
+metadata:
+  name: example-interconnect
+spec:
+  # Add fields here
+  deploymentPlan:
+    image: quay.io/interconnectedcloud/qdrouterd:1.8.0
+    role: interior
+    size: 3
+    placement: Any
