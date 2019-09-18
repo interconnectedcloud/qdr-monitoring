@@ -53,7 +53,7 @@ $ kubectl apply -f ./monitoring/alertmanager.yaml -n myproject
 $ kubectl rollout status deployment/prometheus -w -n myproject
 $ kubectl rollout status deployment/alertmanager -w -n myproject
 $ kubectl create -f ./monitoring/route-alertmanager.yaml -n myproject
-$ kubectl create -f ./monitoring/route-prometheus.yaml -n $myproject
+$ kubectl create -f ./monitoring/route-prometheus.yaml -n myproject
 ```
 
 ### Prepare Grafana datasource and dashboards
