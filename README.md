@@ -42,9 +42,9 @@ If you recieve any errors, you can run the individual command separately:
 ### Create the prometheus deployment and alertmanager
 
 ```console
-$ kubectl apply -f $DIR/monitoring/alerting-interconnect.yaml -n myproject
-$ kubectl apply -f $DIR/monitoring/prometheus.yaml -n myproject
-$ kubectl apply -f $DIR/monitoring/alertmanager.yaml -n myproject
+$ kubectl apply -f ./monitoring/alerting-interconnect.yaml -n myproject
+$ kubectl apply -f ./monitoring/prometheus.yaml -n myproject
+$ kubectl apply -f ./monitoring/alertmanager.yaml -n myproject
 ```
 
 ### Wait for Prometheus server to be ready
@@ -52,18 +52,18 @@ $ kubectl apply -f $DIR/monitoring/alertmanager.yaml -n myproject
 ```console
 $ kubectl rollout status deployment/prometheus -w -n myproject
 $ kubectl rollout status deployment/alertmanager -w -n myproject
-$ kubectl create -f $DIR/monitoring/route-alertmanager.yaml -n $NAMESPACE
-$ kubectl create -f $DIR/monitoring/route-prometheus.yaml -n $NAMESPACE
+$ kubectl create -f ./monitoring/route-alertmanager.yaml -n myproject
+$ kubectl create -f ./monitoring/route-prometheus.yaml -n $myproject
 ```
 
 ### Prepare Grafana datasource and dashboards
 
 ```console
 $ kubectl create configmap grafana-config \
-    --from-file=datasource.yaml=$DIR/monitoring/dashboards/datasource.yaml \
-    --from-file=grafana-dashboard-provider.yaml=$DIR/monitoring/grafana-dashboard-provider.yaml \
-    --from-file=interconnect-dashboard.json=$DIR/monitoring/dashboards/interconnect-raw.json \
-    --from-file=interconnect-dashboard-delayed.json=$DIR/monitoring/dashboards/interconnect-delayed.json \
+    --from-file=datasource.yaml=./monitoring/dashboards/datasource.yaml \
+    --from-file=grafana-dashboard-provider.yaml=./monitoring/grafana-dashboard-provider.yaml \
+    --from-file=interconnect-dashboard.json=./monitoring/dashboards/interconnect-raw.json \
+    --from-file=interconnect-dashboard-delayed.json=./monitoring/dashboards/interconnect-delayed.json \
     -n myproject
 
 ```
@@ -71,12 +71,12 @@ $ kubectl create configmap grafana-config \
 ### Deploy grafana
 
 ```console
-$ kubectl apply -f $DIR/monitoring/grafana.yaml -n myproject
+$ kubectl apply -f ./monitoring/grafana.yaml -n myproject
 ```
 
 ### Wait for Grafana server to be ready
 
 ```console
 $ kubectl rollout status deployment/grafana -w -n myproject
-$ kubectl create -f $DIR/monitoring/route-grafana.yaml -n $NAMESPACE
+$ kubectl create -f ./monitoring/route-grafana.yaml -n myproject
 ```
