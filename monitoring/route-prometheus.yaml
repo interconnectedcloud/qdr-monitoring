@@ -4,7 +4,6 @@ metadata:
   name: prometheus
   namespace: myproject
 spec:
-  host: prometheus-myproject.127.0.0.1.nip.io
   port:
     targetPort: prometheus
   to:
