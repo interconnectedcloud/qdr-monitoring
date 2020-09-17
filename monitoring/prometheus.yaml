@@ -42,14 +42,17 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: prometheus-server
-  namespace: myproject
+  namespace: default
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: prometheus
 spec:
+  selector:
+    matchLabels:
+      name: prometheus
   replicas: 1
   template:
     metadata:
@@ -109,7 +112,7 @@ data:
           regex: alertmanager
           action: keep
         - source_labels: [__meta_kubernetes_namespace]
-          regex: myproject
+          regex: default
           action: keep
         - source_labels: [__meta_kubernetes_pod_container_port_number]
           regex:
@@ -157,3 +160,4 @@ spec:
   selector:
     name: prometheus
   type: ClusterIP
+
