@@ -91,7 +91,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(deliveries_ingress)",
+          "expr": "sum(qdr_deliveries_ingress_total)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -179,7 +179,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(deliveries_egress{job='qdmetrics'})",
+          "expr": "sum(qdr_deliveries_egress_total{job='qdmetrics'})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -267,7 +267,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(auto_links{job=\"qdmetrics\"})",
+          "expr": "sum(qdr_auto_links_total{job='qdmetrics'})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -291,9 +291,7 @@
         "mode": "series",
         "name": null,
         "show": true,
-        "values": [
-          "total"
-        ]
+        "values": ["total"]
       },
       "yaxes": [
         {
@@ -356,7 +354,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "deliveries_ingress_route_container",
+          "expr": "qdr_deliveries_ingress_route_container_total",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}}",
@@ -442,7 +440,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "deliveries_egress_route_container",
+          "expr": "qdr_deliveries_egress_route_container_total",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{instance}}",
@@ -528,7 +526,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(link_routes{job='qdmetrics'})",
+          "expr": "sum(qdr_link_routes_total{job='qdmetrics'})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Link routes",
@@ -551,9 +549,7 @@
         "mode": "series",
         "name": null,
         "show": true,
-        "values": [
-          "total"
-        ]
+        "values": ["total"]
       },
       "yaxes": [
         {
@@ -616,7 +612,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "deliveries_redirected_to_fallback",
+          "expr": "qdr_deliveries_redirected_to_fallback_total",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -703,7 +699,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "dropped_presettled_deliveries",
+          "expr": "qdr_dropped_presettled_deliveries_total",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -790,7 +786,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "presettled_deliveries",
+          "expr": "qdr_presettled_deliveries_total",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -877,7 +873,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(addresses{job='qdmetrics'})",
+          "expr": "sum(qdr_addresses_total{job='qdmetrics'})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Address count",
@@ -900,9 +896,7 @@
         "mode": "series",
         "name": null,
         "show": true,
-        "values": [
-          "total"
-        ]
+        "values": ["total"]
       },
       "yaxes": [
         {
@@ -965,7 +959,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(connections)",
+          "expr": "sum(qdr_connections_total)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Connection count",
@@ -988,9 +982,7 @@
         "mode": "series",
         "name": null,
         "show": true,
-        "values": [
-          "total"
-        ]
+        "values": ["total"]
       },
       "yaxes": [
         {
@@ -1054,7 +1046,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(links)",
+          "expr": "sum(qdr_links_total)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1078,9 +1070,7 @@
         "mode": "series",
         "name": null,
         "show": true,
-        "values": [
-          "total"
-        ]
+        "values": ["total"]
       },
       "yaxes": [
         {
@@ -1119,21 +1109,8 @@
   },
   "timepicker": {
     "hidden": false,
-    "refresh_intervals": [
-      "5s",
-      "10s"
-    ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "refresh_intervals": ["5s", "10s"],
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "browser",
   "title": "Qpid Dispatch Router",

@@ -10,7 +10,7 @@ data:
     - name: interconnect
       rules:
       - alert: DelayedDeliveries
-        expr: rate(deliveries_delayed_1sec[1m]) > 0
+        expr: rate(qdr_deliveries_delayed_1sec_total[1m]) > 0
         for: 10s
         labels:
           severity: warning

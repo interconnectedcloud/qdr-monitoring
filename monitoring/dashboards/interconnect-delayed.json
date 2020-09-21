@@ -91,7 +91,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "deliveries_delayed_10sec",
+          "expr": "qdr_deliveries_delayed_10sec_total",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -178,7 +178,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "deliveries_delayed_1sec",
+          "expr": "qdr_deliveries_delayed_1sec_total",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "1s {{instance}}",
@@ -264,7 +264,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(deliveries_delayed_10sec[1m])",
+          "expr": "rate(qdr_deliveries_delayed_10sec_total[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -272,7 +272,7 @@
           "refId": "A"
         },
         {
-          "expr": "rate(deliveries_delayed_1sec[1m])",
+          "expr": "rate(qdr_deliveries_delayed_1sec_total[1m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
