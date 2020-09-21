@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Change the namespace to that of your project
-NAMESPACE=myproject
+NAMESPACE=default
 
 # Get the current directory
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"

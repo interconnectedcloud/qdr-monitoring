@@ -2,9 +2,9 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: prometheus
-  namespace: myproject
+  namespace: default
 spec:
-  host: prometheus-myproject.127.0.0.1.nip.io
+  host: prometheus-default.127.0.0.1.nip.io
   port:
     targetPort: prometheus
   to:
