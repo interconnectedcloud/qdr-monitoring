@@ -2,9 +2,9 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: grafana
-  namespace: default
+  namespace: myproject
 spec:
-  host: grafana-default.127.0.0.1.nip.io
+  host: grafana-myproject.127.0.0.1.nip.io
   port:
     targetPort: grafana
   to:

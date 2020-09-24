@@ -42,7 +42,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: prometheus-server
-  namespace: default
+  namespace: myproject
 
 ---
 apiVersion: apps/v1
@@ -112,7 +112,7 @@ data:
           regex: alertmanager
           action: keep
         - source_labels: [__meta_kubernetes_namespace]
-          regex: default
+          regex: myproject
           action: keep
         - source_labels: [__meta_kubernetes_pod_container_port_number]
           regex:

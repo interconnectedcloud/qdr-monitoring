@@ -2,9 +2,9 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: alertmanager
-  namespace: default
+  namespace: myproject
 spec:
-  host: alertmanager-default.127.0.0.1.nip.io
+  host: alertmanager-myproject.127.0.0.1.nip.io
   port:
     targetPort: alertmanager
   to:

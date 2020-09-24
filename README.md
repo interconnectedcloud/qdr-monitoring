@@ -12,7 +12,7 @@ These instruction will only setup monitoring of the routers in the cluster. It w
 
 You will need access to a Kubernetes cluster running a deployment of the router. See [qdr-operator](https://github.com/interconnectedcloud/qdr-operator) for instructions on how to install the qdr-operator into your cluster.
 
-This guide assumes you are using a project named 'default'. If not, change all namespace definitions to your current project name.
+This guide assumes you are using a project named 'myproject'. If not, change all namespace definitions to your current project name.
 
 ## Router network
 
@@ -25,7 +25,7 @@ $ kubectl apply -f mesh-3.yaml
 Check to ensure the router network is available:
 
 ```console
-$ kubectl rollout status deployment/example-interconnect -w -n default
+$ kubectl rollout status deployment/example-interconnect -w -n myproject
 ```
 
 ## Deploy prometheus / grafana
@@ -42,18 +42,18 @@ If you recieve any errors, you can run the individual command separately:
 ### Create the prometheus deployment and alertmanager
 
 ```console
-$ kubectl apply -f ./monitoring/alerting-interconnect.yaml -n default
-$ kubectl apply -f ./monitoring/prometheus.yaml -n default
-$ kubectl apply -f ./monitoring/alertmanager.yaml -n default
+$ kubectl apply -f ./monitoring/alerting-interconnect.yaml -n myproject
+$ kubectl apply -f ./monitoring/prometheus.yaml -n myproject
+$ kubectl apply -f ./monitoring/alertmanager.yaml -n myproject
 ```
 
 ### Wait for Prometheus server to be ready
 
 ```console
-$ kubectl rollout status deployment/prometheus -w -n default
-$ kubectl rollout status deployment/alertmanager -w -n default
-$ kubectl create -f ./monitoring/route-alertmanager.yaml -n default
-$ kubectl create -f ./monitoring/route-prometheus.yaml -n default
+$ kubectl rollout status deployment/prometheus -w -n myproject
+$ kubectl rollout status deployment/alertmanager -w -n myproject
+$ kubectl create -f ./monitoring/route-alertmanager.yaml -n myproject
+$ kubectl create -f ./monitoring/route-prometheus.yaml -n myproject
 ```
 
 ### Prepare Grafana datasource and dashboards
@@ -64,19 +64,19 @@ $ kubectl create configmap grafana-config \
     --from-file=grafana-dashboard-provider.yaml=./monitoring/grafana-dashboard-provider.yaml \
     --from-file=interconnect-dashboard.json=./monitoring/dashboards/interconnect-raw.json \
     --from-file=interconnect-dashboard-delayed.json=./monitoring/dashboards/interconnect-delayed.json \
-    -n default
+    -n myproject
 
 ```
 
 ### Deploy grafana
 
 ```console
-$ kubectl apply -f ./monitoring/grafana.yaml -n default
+$ kubectl apply -f ./monitoring/grafana.yaml -n myproject
 ```
 
 ### Wait for Grafana server to be ready
 
 ```console
-$ kubectl rollout status deployment/grafana -w -n default
-$ kubectl create -f ./monitoring/route-grafana.yaml -n default
+$ kubectl rollout status deployment/grafana -w -n myproject
+$ kubectl create -f ./monitoring/route-grafana.yaml -n myproject
 ```
