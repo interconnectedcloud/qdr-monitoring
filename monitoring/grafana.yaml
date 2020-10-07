@@ -1,12 +1,15 @@
 # This is not a recommended configuration, and further support should be available
 # from the Prometheus and Grafana communities.
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: grafana
   template:
     metadata:
       labels:
